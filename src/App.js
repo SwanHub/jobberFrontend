@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Filter from './components/Filter.js'
+import JobCardContainer from './components/JobCardContainer.js'
+import NewJobForm from './components/NewJobForm.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    allJobInfo: []
+  }
+
+  componentDidMount = () => {
+    fetch('http://localhost:3000/jobs')
+      .then(response => response.json())
+      .then(results => this.setState({
+        allJobInfo: results
+      }))
+  }
+
+  postNewJob = (newJob) => {
+    fetch('http://localhost:3000/jobs', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newJob)
+    })
+    .then(response => response.json())
+    .then(result => {
+            console.log(result)
+            this.setState({
+              allJobInfo: [...this.state.allJobInfo, result.job]
+            })
+          }
+        )
+  }
+
+  render(){
+    return (
+      <div className="everything_container">
+        <Filter />
+        <NewJobForm postNewJob={this.postNewJob}/>
+        <JobCardContainer allJobInfo={this.state.allJobInfo} />
+      </div>
+    );
+  }
 }
 
 export default App;

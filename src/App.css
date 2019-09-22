@@ -1,22 +1,53 @@
-.App {
-  text-align: center;
+body {
+  margin:0;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
+.everything_container{
+  margin:0;
+  padding-top: 20px;
+  background-image: url('https://sg.fiverrcdn.com/photos/106300448/original/ee470cacf5876a68ad42a4d718b0c148acfce6f5.jpg');
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.job_container {
+  display:flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor:pointer;
+  width: 40%;
+  margin:auto;
+  margin-top: 10px;
+  box-shadow: 2px 3px 3px grey;
+  font-style: italic;
+  background-color: rgba(47,201,224,0.8);
+}
+
+.job_container:hover {
+  background-color: rgba(47,201,224,1);
+  box-shadow: 5px 3px 3px rgba(0,0,0,0.5);
+}
+
+p {
+  margin:0;
+}
+
+.job_basics {
+  font-weight: bold;
+  font-style: normal;
+}
+
+.top_filter {
+  display:flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  border: 1px solid black;
+  width: 60%;
+  margin:auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: orange;
+  border-radius: 50px;
 }
